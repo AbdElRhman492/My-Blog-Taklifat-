@@ -1,0 +1,173 @@
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  background-color: $container-color
+  box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1)
+  padding: 0 1rem
+  z-index: $z-fixed
+
+.header__container
+  display: flex
+  align-items: center
+  justify-content: space-between
+  height: $header-height
+
+.header__img
+  width: 35px
+  height: 35px
+  border-radius: 50%
+
+.header__logo
+  color: $title-color
+  font-weight: $font-medium
+  display: none
+
+.header__icon,
+  font-size: 1.2rem
+
+.header__toggle
+  color: $title-color
+  cursor: pointer
+  font-size: 1.2rem
+
+.nav
+  position: fixed
+  top: 0
+  left: -100%
+  height: 100vh
+  padding: 1rem 1rem 3rem
+  background-color: $container-color
+  box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1)
+  z-index: $z-fixed
+  transition: .4s
+
+.nav__container
+  height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding-bottom: 3rem
+  overflow: auto
+  scrollbar-width: none // For mozilla
+  &::-webkit-scrollbar // For Google And other browsers
+    display: none
+
+.nav__logo
+  font-weight: $font-semi-bold
+  margin-bottom: 2.5rem
+
+.nav__logo-name
+  width: 100px
+
+.nav__list
+  display: grid
+  row-gap: 6rem
+
+.nav__items
+  display: grid
+  row-gap: 2rem
+
+.nav__subtitle
+  font-size: $normal-font-size
+  text-transform: uppercase
+  letter-spacing: .1rem
+  color: $text-color-light
+
+.nav__link
+  display: flex
+  align-items: center
+  color: $text-color
+  cursor: pointer
+  &:hover
+    color: $first-color
+
+.nav__icon
+  font-size: 1.2rem
+  margin-right: .5rem
+
+.nav__name
+  font-size: $small-font-size
+  font-weight: $font-medium
+  white-space: nowrap
+
+.nav__logout
+  margin-top: 5rem
+
+.nav__dropdown  // Dropdown
+  overflow: hidden
+  max-height: 21px
+  transition: .4s ease-in-out
+  &-collapse
+    background-color: $first-color-light
+    border-radius: .25rem
+    margin-top: 1rem
+  &-content
+    display: grid
+    row-gap: 1rem
+    padding: .75rem 1rem
+  &-item
+    font-size: $smaller-font-size
+    font-weight: $font-medium
+    color: $text-color
+    &:hover
+      color: $first-color
+  &-icon
+    margin-left: auto
+    transition: .4s
+  &:hover  // Show dropdown collapse
+    max-height: 100rem
+    .nav__dropdown-icon // Rotate icon arrow
+      transform: rotate(180deg)
+
+.show-menu  // Show Menu
+  left: 0
+
+.active // Active Link
+  color: $first-color
+
+@media screen and ($small_devices)
+  .nav__logo-name
+    width: max-content
+
+@media screen and ($medium_devices)
+  body
+    padding: 1rem 3rem 0 6rem
+
+  .header
+    padding: 0 3rem 0 6rem
+    &__container
+      height: $header-height + .5rem
+    &__toggle
+      display: none
+    &__logo
+      display: block
+    &__img
+      width: 40px
+      height: 40px
+      order: 1
+
+  .nav
+    left: 0
+    padding: 1.2rem 1.5rem 0
+    width: 75px // Reduced navbar
+    &__items
+      row-gap: 2.2rem
+    &__icon
+      font-size: 1.3rem
+    &__logo-name, // Element Opacity
+    &__name,
+    &__subtitle,
+    &__dropdown-icon
+      opacity: 0
+      transition: 0.3s
+    &:hover // Navbar expanded
+      width: $nav-width
+      .nav__logo-name,
+      .nav__subtitle,
+      .nav__name,
+      .nav__dropdown-icon
+        opacity: 1
+
+// END NAVBAR
